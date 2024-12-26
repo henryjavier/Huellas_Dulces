@@ -47,6 +47,155 @@ a {
   color: #fff;
 }
 
+
+
+.center-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40vh; /* Ajusta para centrar verticalmente */
+}
+
+/* Tu CSS original */
+.card {
+  --bg-color: #ffb700; /* Fondo suave */
+  background-color: var(--bg-color);
+  padding: 1rem 1rem;
+  border-radius: 5.25rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; /* Asegura que el contenido interno esté alineado */
+}
+
+.loader {
+color: rgb(255, 251, 253);
+font-family: "Poppins", sans-serif;
+font-weight: 450;
+font-size: 38px;
+box-sizing: content-box;
+height: 40px;
+padding: 20px 20px;
+display:inline-flex;
+justify-content: center; /* Centra el texto horizontalmente */
+align-items: center; /* Centra el texto verticalmente */
+border-radius: 105px;
+}
+
+.words {
+  overflow: hidden;
+  position: relative;
+  height: 40px; /* Altura del contenedor */
+
+  justify-content: center; /* Centra el texto animado horizontalmente */
+  align-items: center; /* Centra verticalmente */
+}
+
+.words::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+  var(--bg-color) 20%,
+  transparent 30%,
+  transparent 70%,
+  var(--bg-color) 90%
+  );
+  z-index: 20;
+}
+
+.word {
+  display: block;
+  height: 100%;
+  padding-left: 10px;
+  color: #ff0000;
+  animation: spin_4991 10s infinite;
+  text-align: center; 
+}
+
+@keyframes spin_4991 {
+  10% {
+  transform: translateY(-102%);
+  }
+  25% {
+  transform: translateY(-100%);
+  }
+  35% {
+  transform: translateY(-202%);
+  }
+  50% {
+  transform: translateY(-200%);
+  }
+  60% {
+  transform: translateY(-302%);
+  }
+  75% {
+  transform: translateY(-300%);
+  }
+  85% {
+  transform: translateY(-402%);
+  }
+  100% {
+  transform: translateY(-400%);
+  }
+}
+
+/* Responsive para dispositivos móviles */
+@media screen and (max-width: 768px) {
+  header {
+    flex-direction: column; /* Mantén la disposición en columna */
+    padding: 15px;
+    text-align: center; /* Centra el texto */
+  }
+
+  h1 {
+    font-size: 1.5rem; /* Ajusta el tamaño del texto */
+    padding-bottom: 10px;
+  }
+
+  nav ul {
+    flex-direction: column; /* Cambia a columna en lugar de fila */
+    padding: 0;
+  }
+
+  nav li {
+    margin: 10px 0; /* Espaciado vertical entre elementos */
+  }
+
+  a {
+    font-size: 1rem; /* Tamaño ajustado para enlaces */
+  }
+
+  .center-container {
+    height: 50vh; /* Ajusta la altura para móviles */
+    padding: 10px;
+  }
+
+  .card {
+    padding: 1rem;
+    border-radius: 2rem; /* Reduce el borde redondeado */
+    width: 90%; /* Ajusta el ancho para adaptarse al contenedor */
+    margin: 10px auto; /* Centra la tarjeta en el diseño */
+  }
+
+  .loader {
+    font-size: 1.5rem; /* Ajusta el tamaño del texto */
+    padding: 15px; /* Reduce el padding */
+    height: auto; /* Ajusta dinámicamente la altura */
+  }
+
+  .words {
+    height: auto; /* Permite que se ajuste dinámicamente */
+    font-size: 1rem; /* Ajusta el tamaño del texto */
+  }
+
+  .word {
+    padding-left: 5px; /* Reduce el padding */
+  }
+}
+
+
+
 body {
     min-height: 100vh;
     overflow-x: hidden;
@@ -377,98 +526,6 @@ video {
 
 .product-card:hover {
     transform: scale(1.05);
-}
-
-
-.center-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 40vh; /* Ajusta para centrar verticalmente */
-}
-
-  /* Tu CSS original */
-  .card {
-    --bg-color: #ffb700; /* Fondo suave */
-    background-color: var(--bg-color);
-    padding: 1rem 1rem;
-    border-radius: 5.25rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column; /* Asegura que el contenido interno esté alineado */
-}
-
-.loader {
-  color: rgb(255, 251, 253);
-  font-family: "Poppins", sans-serif;
-  font-weight: 450;
-  font-size: 38px;
-  box-sizing: content-box;
-  height: 40px;
-  padding: 20px 20px;
-  display:inline-flex;
-  justify-content: center; /* Centra el texto horizontalmente */
-  align-items: center; /* Centra el texto verticalmente */
-  border-radius: 105px;
-}
-
-.words {
-    overflow: hidden;
-    position: relative;
-    height: 40px; /* Altura del contenedor */
-
-    justify-content: center; /* Centra el texto animado horizontalmente */
-    align-items: center; /* Centra verticalmente */
-}
-
-.words::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-    var(--bg-color) 20%,
-    transparent 30%,
-    transparent 70%,
-    var(--bg-color) 90%
-    );
-    z-index: 20;
-}
-
-.word {
-    display: block;
-    height: 100%;
-    padding-left: 10px;
-    color: #ff0000;
-    animation: spin_4991 10s infinite;
-    text-align: center; 
-}
-
-@keyframes spin_4991 {
-    10% {
-    transform: translateY(-102%);
-    }
-    25% {
-    transform: translateY(-100%);
-    }
-    35% {
-    transform: translateY(-202%);
-    }
-    50% {
-    transform: translateY(-200%);
-    }
-    60% {
-    transform: translateY(-302%);
-    }
-    75% {
-    transform: translateY(-300%);
-    }
-    85% {
-    transform: translateY(-402%);
-    }
-    100% {
-    transform: translateY(-400%);
-    }
 }
 
 
