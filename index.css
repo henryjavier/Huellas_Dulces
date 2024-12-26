@@ -267,6 +267,51 @@ h1 {
 
   
 }
+
+@media screen and (max-width: 768px) {
+  .countdown {
+    padding: 8px; /* Reduce el padding */
+    border-radius: 8px; /* Ajusta los bordes redondeados */
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2); /* Reduce el efecto de sombra */
+  }
+
+  .countdown h1 {
+    font-size: 1.8rem; /* Reduce el tamaño de la fuente */
+    margin-bottom: -10px; /* Ajusta el margen inferior */
+  }
+
+  .countdown div {
+    font-size: 1.2rem; /* Reduce el tamaño de la fuente */
+  }
+
+  .time {
+    margin: 0 5px; /* Reduce el espacio entre los elementos */
+  }
+
+  .snowflake {
+    font-size: 12px; /* Copos de nieve más pequeños en móviles */
+    animation: fall 8s linear infinite; /* Ajusta la duración de la animación */
+  }
+
+  @keyframes fall {
+    0% {
+      top: -20px;
+      opacity: 1;
+      transform: translateX(0); /* Inicia sin movimiento horizontal */
+    }
+    50% {
+      transform: translateX(-10px); /* Movimiento leve hacia un lado */
+    }
+    100% {
+      top: 100vh;
+      opacity: 0;
+      transform: translateX(10px); /* Movimiento leve hacia el otro lado */
+    }
+  }
+}
+
+
+
 .icon {
   font-size: 25px; /* Tamaño del ícono */
   align-items: center;
