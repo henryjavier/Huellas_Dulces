@@ -1,0 +1,223 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+* {
+    font-family: "Ubuntu", sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --blue: #b10000b1;
+    --white: #ffffff;
+    --gray: #ffffff;
+    --blank1: #ef6666;
+    --blank2: #ef6666;
+}
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.container {
+    position: relative;
+    width: 100%;
+}
+
+/* Menu Icon */
+.menu-icon {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    width: 40px;
+    height: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.menu-icon span {
+    height: 5px;
+    width: 100%;
+    background: var(--gray);
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+/* Navigation */
+.navigation {
+    position: fixed;
+    width: 300px;
+    height: 100%;
+    background: var(--blank2);
+    border-left: 10px solid rgb(255, 38, 0) var(--blank2);
+    transition: 0.5s;
+    overflow: hidden;
+    transform: translateX(-100%);
+}
+
+.navigation.active {
+    transform: translateX(0);
+}
+
+.navigation ul {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.navigation ul li {
+    position: relative;
+    width: 100%;
+    list-style: none;
+    border-top-left-radius: 30px ;
+    border-bottom-left-radius: 30px;
+}
+
+.navigation ul li:hover {
+    background-color: var(--white);
+}
+
+.navigation ul li:nth-child(1) {
+    margin-bottom: 40px;
+    pointer-events: none;
+}
+
+.navigation ul li a {
+    position: relative;
+    display: block;
+    width: 100%;
+    display: flex;
+    text-decoration: none ;
+    color: var(--white);
+}
+
+.navigation ul li:hover a {
+    color: var(--blank2);
+}
+
+.navigation ul li a .icon {
+    position: relative;
+    display: block;
+    min-width: 60px;
+    height: 60px;
+    line-height: 75px;
+    text-align: center;
+}
+
+.navigation ul li a .icon ion-icon {
+    font-size: 1.75rem;
+}
+
+.navigation ul li a .title {
+    position: relative;
+    display: block;
+    padding: 0 10px;
+    height: 60px;
+    line-height: 60px;
+    text-align: start;
+    white-space: nowrap;
+}
+
+.navigation ul li:hover a::before {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: -50px;
+    width: 50px;
+    height: 50px;
+    background-color: transparent;
+    border-radius: 50%;
+    box-shadow: 35px 35px 0 10px var(--white);
+    pointer-events: none;
+}
+
+.navigation ul li:hover a::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: -50px;
+    width: 50px;
+    height: 50px;
+    background-color: transparent;
+    border-radius: 50%;
+    box-shadow: 35px -35px 0 10px var(--white);
+    pointer-events: none;
+}
+
+/* Video Container */
+.video-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+}
+
+video {
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .menu-icon {
+        width: 30px;
+        height: 20px;
+    }
+
+    .menu-icon span {
+        height: 4px;
+    }
+
+    .navigation {
+        width: 250px;
+    }
+
+    .navigation ul li a .icon {
+        min-width: 50px;
+        height: 50px;
+        line-height: 60px;
+    }
+
+    .navigation ul li a .title {
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .menu-icon {
+        width: 25px;
+        height: 18px;
+    }
+
+    .navigation {
+        width: 200px;
+    }
+
+    .navigation ul li a .icon {
+        min-width: 40px;
+        height: 40px;
+        line-height: 50px;
+    }
+
+    .navigation ul li a .title {
+        font-size: 0.75rem;
+    }
+    
+    video {
+        object-fit: cover; /* Ajusta el video para pantallas pequeñas */
+    }
+}

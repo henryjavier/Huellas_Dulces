@@ -1,0 +1,802 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+* {
+    font-family: "Ubuntu", sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+  --blue: #e2b206e3;
+  --white: #ffffff;
+  --gray: #ffffff;
+  --blank1: #dd9e00;
+  --blank2: #dd9e00;
+}
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+
+
+.container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+/* Menu Icon */
+.menu-icon {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    width: 40px;
+    height: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+   z-index: 1001; /* Menú siempre estará encima */
+    
+}
+
+.menu-icon span {
+    height: 5px;
+    width: 100%;
+    background: var(--gray);
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.icon {
+  font-size: 25px; /* Tamaño del ícono */
+  align-items: center;
+  text-align: center;
+}
+
+
+
+
+/* Navigation */
+.navigation {
+  position: fixed;
+  width: 300px;
+  height: 100%;
+  background: var(--blank2);
+  border-left: 10px solid rgb(255, 38, 0) var(--blank2);
+  transition: 0.5s;
+  overflow: hidden;
+  transform: translateX(-100%);
+  z-index: 1000
+}
+
+.navigation.active {
+  transform: translateX(0);
+}
+
+.navigation ul {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.navigation ul li {
+  position: relative;
+  width: 100%;
+  list-style: none;
+  border-top-left-radius: 30px ;
+  border-bottom-left-radius: 30px;
+}
+
+.navigation ul li:hover {
+  background-color: var(--white);
+}
+
+.navigation ul li:nth-child(1) {
+  margin-bottom: 40px;
+  pointer-events: none;
+}
+
+.navigation ul li a {
+  position: relative;
+  display: block;
+  width: 100%;
+  display: flex;
+  text-decoration: none ;
+  color: var(--white);
+}
+
+.navigation ul li:hover a {
+  color: var(--blank2);
+}
+
+.navigation ul li a .icon {
+  position: relative;
+  display: block;
+  min-width: 80px;
+  height: 50px;
+  line-height: 60px;
+  
+}
+
+.navigation ul li a .title {
+position: relative;
+display: flex; /* Cambiamos a flexbox */
+align-items: center; /* Centra verticalmente */
+justify-content: center; /* Centra horizontalmente */
+height: 60px;
+text-align: center; /* Asegura que el texto esté centrado */
+white-space: nowrap;
+padding: 0 10px; /* Mantén el espacio interno si es necesario */
+}
+
+
+.navigation ul li:hover a::before {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: -50px;
+  width: 50px;
+  height: 50px;
+  background-color: transparent;
+  border-radius: 50%;
+  box-shadow: 35px 35px 0 10px var(--white);
+  pointer-events: none;
+}
+
+.navigation ul li:hover a::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  bottom: -50px;
+  width: 50px;
+  height: 50px;
+  background-color: transparent;
+  border-radius: 50%;
+  box-shadow: 35px -35px 0 10px var(--white);
+  pointer-events: none;
+}
+
+/* Video Container */
+.video-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+}
+
+video {
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .menu-icon {
+        width: 30px;
+        height: 20px;
+    }
+
+    .menu-icon span {
+        height: 4px;
+    }
+
+    .navigation {
+        width: 250px;
+    }
+
+    .navigation ul li a .icon {
+        min-width: 50px;
+        height: 50px;
+        line-height: 60px;
+    }
+
+    .navigation ul li a .title {
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .menu-icon {
+        width: 25px;
+        height: 18px;
+    }
+
+    .navigation {
+        width: 200px;
+    }
+
+    .navigation ul li a .icon {
+        min-width: 40px;
+        height: 40px;
+        line-height: 50px;
+    }
+
+    .navigation ul li a .title {
+        font-size: 0.75rem;
+    }
+    
+    video {
+        object-fit: cover; /* Ajusta el video para pantallas pequeñas */
+    }
+}
+
+
+
+/* CSS */
+/* Contenedor para centrar */
+
+.center-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40vh; /* Ajusta para centrar verticalmente */
+}
+
+/* Tu CSS original */
+.card {
+  --bg-color: #ffb700; /* Fondo suave */
+  background-color: var(--bg-color);
+  padding: 1rem 1rem;
+  border-radius: 5.25rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; /* Asegura que el contenido interno esté alineado */
+}
+
+.loader {
+color: rgb(255, 251, 253);
+font-family: "Poppins", sans-serif;
+font-weight: 450;
+font-size: 38px;
+box-sizing: content-box;
+height: 40px;
+padding: 20px 20px;
+display:inline-flex;
+justify-content: center; /* Centra el texto horizontalmente */
+align-items: center; /* Centra el texto verticalmente */
+border-radius: 105px;
+}
+
+.words {
+  overflow: hidden;
+  position: relative;
+  height: 40px; /* Altura del contenedor */
+
+  justify-content: center; /* Centra el texto animado horizontalmente */
+  align-items: center; /* Centra verticalmente */
+}
+
+.words::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+  var(--bg-color) 20%,
+  transparent 30%,
+  transparent 70%,
+  var(--bg-color) 90%
+  );
+  z-index: 20;
+}
+
+.word {
+  display: block;
+  height: 100%;
+  padding-left: 10px;
+  color: #ff0000;
+  animation: spin_4991 10s infinite;
+  text-align: center; 
+}
+
+@keyframes spin_4991 {
+  10% {
+  transform: translateY(-102%);
+  }
+  25% {
+  transform: translateY(-100%);
+  }
+  35% {
+  transform: translateY(-202%);
+  }
+  50% {
+  transform: translateY(-200%);
+  }
+  60% {
+  transform: translateY(-302%);
+  }
+  75% {
+  transform: translateY(-300%);
+  }
+  85% {
+  transform: translateY(-402%);
+  }
+  100% {
+  transform: translateY(-400%);
+  }
+}
+
+
+.logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40vh; 
+    z-index: 1/* Esto hace que el div ocupe toda la altura de la ventana */
+}
+
+.logo {
+    max-width: 100%; /* Ajusta el tamaño del logo */
+    max-height: 100%; /* Asegura que no se salga de su contenedor */
+}
+
+
+/* From Uiverse.io by himanshu9682 */ 
+.type--A {
+    --line_color: #555555;
+    --back_color: #ffecf6;
+  }
+  .type--B {
+    --line_color: #1b1919;
+    --back_color: #e9ecff;
+  }
+  .type--C {
+    --line_color: #f2f75f;
+    --back_color: #323232;
+  }
+  .button {
+    position: relative;
+    z-index: 0;
+    width: 240px;
+    height: 56px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    color: var(--line_color);
+    letter-spacing: 2px;
+    transition: all 0.3s ease;
+  }
+  .button__text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+  }
+  .button::before,
+  .button::after,
+  .button__text::before,
+  .button__text::after {
+    content: "";
+    position: absolute;
+    height: 3px;
+    border-radius: 2px;
+    background: var(--line_color);
+    transition: all 0.5s ease;
+  }
+  .button::before {
+    top: 0;
+    left: 54px;
+    width: calc(100% - 56px * 2 - 16px);
+  }
+  .button::after {
+    top: 0;
+    right: 54px;
+    width: 8px;
+  }
+  .button__text::before {
+    bottom: 0;
+    right: 54px;
+    width: calc(100% - 56px * 2 - 16px);
+  }
+  .button__text::after {
+    bottom: 0;
+    left: 54px;
+    width: 8px;
+  }
+  .button__line {
+    position: absolute;
+    top: 0;
+    width: 56px;
+    height: 100%;
+    overflow: hidden;
+  }
+  .button__line::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 150%;
+    height: 100%;
+    box-sizing: border-box;
+    border-radius: 300px;
+    border: solid 3px var(--line_color);
+  }
+  .button__line:nth-child(1),
+  .button__line:nth-child(1)::before {
+    left: 0;
+  }
+  .button__line:nth-child(2),
+  .button__line:nth-child(2)::before {
+    right: 0;
+  }
+  .button:hover {
+    letter-spacing: 6px;
+  }
+  .button:hover::before,
+  .button:hover .button__text::before {
+    width: 8px;
+  }
+  .button:hover::after,
+  .button:hover .button__text::after {
+    width: calc(100% - 56px * 2 - 16px);
+  }
+  .button__drow1,
+  .button__drow2 {
+    position: absolute;
+    z-index: -1;
+    border-radius: 16px;
+    transform-origin: 16px 16px;
+  }
+  .button__drow1 {
+    top: -16px;
+    left: 40px;
+    width: 32px;
+    height: 0;
+    transform: rotate(30deg);
+  }
+  .button__drow2 {
+    top: 44px;
+    left: 77px;
+    width: 32px;
+    height: 0;
+    transform: rotate(-127deg);
+  }
+  .button__drow1::before,
+  .button__drow1::after,
+  .button__drow2::before,
+  .button__drow2::after {
+    content: "";
+    position: absolute;
+  }
+  .button__drow1::before {
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 32px;
+    border-radius: 16px;
+    transform-origin: 16px 16px;
+    transform: rotate(-60deg);
+  }
+  .button__drow1::after {
+    top: -10px;
+    left: 45px;
+    width: 0;
+    height: 32px;
+    border-radius: 16px;
+    transform-origin: 16px 16px;
+    transform: rotate(69deg);
+  }
+  .button__drow2::before {
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 32px;
+    border-radius: 16px;
+    transform-origin: 16px 16px;
+    transform: rotate(-146deg);
+  }
+  .button__drow2::after {
+    bottom: 26px;
+    left: -40px;
+    width: 0;
+    height: 32px;
+    border-radius: 16px;
+    transform-origin: 16px 16px;
+    transform: rotate(-262deg);
+  }
+  .button__drow1,
+  .button__drow1::before,
+  .button__drow1::after,
+  .button__drow2,
+  .button__drow2::before,
+  .button__drow2::after {
+    background: var(--back_color);
+  }
+  .button:hover .button__drow1 {
+    animation: drow1 ease-in 0.06s;
+    animation-fill-mode: forwards;
+  }
+  .button:hover .button__drow1::before {
+    animation: drow2 linear 0.08s 0.06s;
+    animation-fill-mode: forwards;
+  }
+  .button:hover .button__drow1::after {
+    animation: drow3 linear 0.03s 0.14s;
+    animation-fill-mode: forwards;
+  }
+  .button:hover .button__drow2 {
+    animation: drow4 linear 0.06s 0.2s;
+    animation-fill-mode: forwards;
+  }
+  .button:hover .button__drow2::before {
+    animation: drow3 linear 0.03s 0.26s;
+    animation-fill-mode: forwards;
+  }
+  .button:hover .button__drow2::after {
+    animation: drow5 linear 0.06s 0.32s;
+    animation-fill-mode: forwards;
+  }
+  @keyframes drow1 {
+    0% {
+      height: 0;
+    }
+    100% {
+      height: 100px;
+    }
+  }
+  @keyframes drow2 {
+    0% {
+      width: 0;
+      opacity: 0;
+    }
+    10% {
+      opacity: 0;
+    }
+    11% {
+      opacity: 1;
+    }
+    100% {
+      width: 120px;
+    }
+  }
+  @keyframes drow3 {
+    0% {
+      width: 0;
+    }
+    100% {
+      width: 80px;
+    }
+  }
+  @keyframes drow4 {
+    0% {
+      height: 0;
+    }
+    100% {
+      height: 120px;
+    }
+  }
+  @keyframes drow5 {
+    0% {
+      width: 0;
+    }
+    100% {
+      width: 124px;
+    }
+  }
+  
+  .container-boton1 {
+    width: 100%;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .button:not(:last-child) {
+    margin-bottom: 64px;
+  }
+  .container-boton2 {
+    width: 100%;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .img1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh; /* Esto hace que el div ocupe toda la altura de la ventana */
+}
+
+.img2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh; /* Esto hace que el div ocupe toda la altura de la ventana */
+}
+
+
+/* Estilo del contenedor del carrusel */
+.carousel {
+  position: relative;
+  width: 340px; /* Ancho del contenedor */
+  height: 320px; /* Altura del contenedor */
+  overflow: hidden;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  z-index: 1;
+}
+
+.carousel-slider {
+  display: flex;
+  transition: transform 1s ease-in-out;
+  width: 100%;
+}
+
+.carousel-slider img {
+  width: 100%; /* Ocupa el 100% del ancho del contenedor */
+  height: 100%; /* Ocupa el 100% de la altura del contenedor */
+  object-fit: cover; /* Ajusta la imagen sin distorsionarla */
+  border-radius: 10px;
+}
+
+
+/* Estilo para los puntos de navegación */
+.carousel-dots {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+}
+
+.carousel-dots .dot {
+  height: 18px;
+  width: 18px;
+  background-color: #bbb;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 1s;
+}
+
+.carousel-dots .dot.active {
+  background-color: #717171;
+}
+
+.product-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); /* Aumenta el tamaño mínimo a 360px */
+  gap: 30px; /* Aumenta el espacio entre tarjetas */
+  margin: 100px 0;
+  z-index: 1;
+  justify-items: center;
+}
+
+.product-card {
+  background: var(--white);
+  border-radius: 12px; /* Mayor redondeo */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  width: 100%; /* Ajusta al contenedor */
+  max-width: 400px; /* Ancho máximo */
+  padding: 25px 20px; /* Aumenta el padding */
+  text-align: center;
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1;
+}
+
+.product-card img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.product-card h2 {
+  color: var(--blue);
+  font-size: 1.2rem;
+  margin: 15px 0 10px;
+}
+
+.product-card p {
+  font-size: 1rem;
+  color: var(--blank2);
+  margin-bottom: 15px;
+  text-align: left; /* Alinea el texto del párrafo a la izquierda */
+}
+
+.product-card button {
+  background: var(--blue);
+  color: var(--white);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s ease;
+}
+
+.product-card button:hover {
+  background: #e60000;
+}
+
+.product-card:hover {
+  transform: scale(1.05);
+}
+
+
+/* Ajuste general para pantallas más pequeñas */
+@media (max-width: 768px) {
+    .product-container {
+        flex-wrap: wrap; /* Permite que los elementos se alineen en múltiples filas en pantallas pequeñas */
+        justify-content: center; /* Centra los elementos en dispositivos móviles */
+    }
+
+    .product-card {
+        width: 90%; /* Ajusta el ancho del contenedor de productos para ocupar el 90% del ancho de la pantalla */
+        max-width: 350px; /* Limita el ancho máximo para que se vea bien en móviles */
+        margin: 10px 0; /* Añade margen entre cada tarjeta en la vista móvil */
+    }
+
+    .carousel {
+        width: 100%; /* Ajusta el carrusel para que ocupe todo el ancho del product-card */
+        height: auto; /* Permite que la altura se ajuste automáticamente */
+        z-index: 1; /* Contenedor de imágenes estará detrás del menú */
+    }
+
+    .carousel-slider img {
+        width: 100%; /* La imagen ocupa todo el ancho del carrusel */
+        height: auto; /* Ajuste automático de altura para mantener la proporción */
+    }
+}
+
+footer {
+  background-color: #dd9e00;
+  color: white;
+  text-align: center;
+  padding: 1rem 0;
+}
+
+footer nav a {
+  color:rgb(251, 251, 251);
+  text-decoration: none;
+  margin: 0 0.5rem;
+}
+
+footer nav a:hover {
+  text-decoration: underline;
+}
+
+
+.snowflake {
+  position: absolute;
+  top: -20px; /* Empezar fuera de la pantalla, un poco más arriba */
+  opacity: 1;
+  animation: fall 10s linear infinite; /* Llamamos la animación "fall" */
+}
+
+/* Animación de caída */
+@keyframes fall {
+  0% {
+      top: -20px; /* Inicia fuera de la pantalla, justo arriba */
+      opacity: 1; /* El copo es completamente visible al inicio */
+  }
+  100% {
+      top: 100vh; /* El copo de nieve cae hasta el final de la pantalla */
+      opacity: 0; /* El copo se desvanece al llegar al final */
+  }
+
+  
+}
+
+
